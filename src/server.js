@@ -10,4 +10,4 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 require('./routes/home')(app)
 
-app.listen(process.env.PORT || 8081)
+app.listen(process.env.PORT || '0.0.0.0')
