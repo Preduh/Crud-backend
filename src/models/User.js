@@ -9,6 +9,9 @@ const userSchema = mongoose.Schema({
         type: String,
         require: true,
         lowercase: true
+    },
+    atCreated: {
+        type: Date
     }
 })
 
