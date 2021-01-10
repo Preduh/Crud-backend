@@ -11,7 +11,7 @@ const userSchema = mongoose.Schema({
         lowercase: true
     },
     atCreated: {
-        type: Date
+        type: String
     }
 })
 

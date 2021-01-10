@@ -8,11 +8,14 @@ router.post('/register', async (req, res) => { // Create
     } else {
         try {
             let Now = new Date
+            let hour = Now.getHours()
+            let minutes = Now.getMinutes()
+            let atCreated = `${hour}:${minutes}`
 
             const user = await User.create({
                 name: req.body.name,
                 email: req.body.email,
-                atCreated: Now
+                atCreated
             })
     
             return res.redirect('https://register-mongoose-frontend.herokuapp.com')
