@@ -30,7 +30,7 @@ router.get('/users', async (req, res) => { // Read
         const users = await User.find()
 
         const decrescent = (a, b) => {
-            return a.atCreated < b.atCreated
+            return a.atCreated > b.atCreated
         }
         
         return res.json(users.sort(decrescent))
