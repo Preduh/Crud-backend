@@ -6,7 +6,7 @@ router.post('/register', async (req, res) => { // Create
     try {
         const user = await User.create(req.body)
 
-        return res.redirect('/users')
+        return res.redirect('http://localhost:3000/')
     } catch (err) {
         console.error(err)
     }
