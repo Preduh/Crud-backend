@@ -6,7 +6,7 @@ router.post('/register', async (req, res) => { // Create
     try {
         const user = await User.create(req.body)
 
-        return res.send(user)
+        return res.redirect('/users')
     } catch (err) {
         console.error(err)
     }
@@ -16,7 +16,8 @@ router.get('/users', async (req, res) => { // Read
     try {
         const users = await User.find()
         
-        return res.json(users || {})
+        return res.json(users)
+        
     } catch (err) {
         console.error(err)
     }
@@ -35,7 +36,7 @@ router.post('/updateUser/:id', async (req, res) => { // Update
 router.post('/deleteUser/:id', async (req, res) => { // Delete
     try {
         const user = await User.findById(req.params.id)
-        User.deleteOne({ "_id": req.params.id })
+        await User.deleteOne({ "_id": req.params.id })
 
         return res.json(user)
     } catch (err) {
