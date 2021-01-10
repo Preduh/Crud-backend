@@ -24,7 +24,7 @@ router.post('/register', async (req, res) => { // Create
 
 router.get('/users', async (req, res) => { // Read
     try {
-        const users = await User.find().sort({ atCreated: 1 })
+        const users = await User.find().sort({ atCreated: -1 })
         
         return res.json(users)
         
