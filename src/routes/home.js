@@ -10,7 +10,7 @@ router.post('/register', async (req, res) => { // Create
             let Now = new Date
             let hour = Now.getHours()
             let minutes = Now.getMinutes()
-            let atCreated = `${hour}:${minutes}`
+            let atCreated = `${hour}-${minutes}`
 
             const user = await User.create({
                 name: req.body.name,
@@ -28,8 +28,12 @@ router.post('/register', async (req, res) => { // Create
 router.get('/users', async (req, res) => { // Read
     try {
         const users = await User.find()
+
+        const decrescent = (a, b) => {
+            return a.atCreated < b.atCreated
+        }
         
-        return res.json(users)
+        return res.json(users.sort(decrescent))
         
     } catch (err) {
         console.error(err)
