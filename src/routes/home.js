@@ -3,12 +3,16 @@ const router = express.Router()
 const User = require('../models/User')
 
 router.post('/register', async (req, res) => { // Create
-    try {
-        const user = await User.create(req.body)
-
+    if (req.body.name === "" || req.body.email === "") {
         return res.redirect('https://register-mongoose-frontend.herokuapp.com')
-    } catch (err) {
-        console.error(err)
+    } else {
+        try {
+            const user = await User.create(req.body)
+    
+            return res.redirect('https://register-mongoose-frontend.herokuapp.com')
+        } catch (err) {
+            console.error(err)
+        }
     }
 })
 
