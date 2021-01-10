@@ -38,7 +38,7 @@ router.post('/deleteUser/:id', async (req, res) => { // Delete
         const user = await User.findById(req.params.id)
         await User.deleteOne({ "_id": req.params.id })
 
-        return res.json(user)
+        return res.redirect('https://register-mongoose-frontend.herokuapp.com')
     } catch (err) {
         console.error(err)
     }
