@@ -6,7 +6,7 @@ router.post('/register', async (req, res) => { // Create
     try {
         const user = await User.create(req.body)
 
-        return res.redirect('http://localhost:3000/')
+        return res.redirect('https://register-mongoose-frontend.herokuapp.com')
     } catch (err) {
         console.error(err)
     }
