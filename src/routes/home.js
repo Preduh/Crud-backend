@@ -27,13 +27,9 @@ router.post('/register', async (req, res) => { // Create
 
 router.get('/users', async (req, res) => { // Read
     try {
-        const users = await User.find()
-
-        const decrescent = (a, b) => {
-            return a.atCreated > b.atCreated
-        }
+        const users = await User.find().sort({ atCreated: 1 })
         
-        return res.json(users.sort(decrescent))
+        return res.json(users)
         
     } catch (err) {
         console.error(err)
